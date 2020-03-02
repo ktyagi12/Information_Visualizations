@@ -1,0 +1,71 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/colmr/vis_class/master/London2012Vega.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.Total > 2"
+    }
+  ],
+
+  "mark" : {"type":"bar", "tooltip": {"content": "data"}},
+  "title": 
+  { 
+    "text": "Top Scorer Olympic Athletes",
+    "anchor": "middle",
+     "fontSize": 20
+  },
+  "width":450,
+  "height":400,
+  "config":
+  { 
+    "axis":
+    {
+      "labelFontSize": 10,
+      "titleFontSize": 12,
+      "titlePadding" : 10
+      
+
+    },
+    "legend": 
+    { 
+      "orient":"bottom-right",
+      "titleFontSize": 16
+    } 
+  },
+
+  "encoding" :
+  {
+    "x":
+      {
+        "field":"Total",
+        "type": "quantitative",
+        "scale": {"domain": [0,5]},
+        "axis": {"title": "Total medals won","tickMinStep" : 1}
+        
+      },
+    "y":
+      {
+        "field": "Name", 
+        "type": "nominal",
+        "scale" : {"zero": false},
+        "sort" : "-x",
+        "axis": {"title": "Athletes"}
+        
+      },
+      "color": { 
+        "field": "Country","type": "nominal",
+        "legend":{"title": "Winning Country"}
+      },
+      "tooltip":
+        [
+          {"field": "Gold", "type":"quantitative"},
+          {"field": "Silver", "type":"quantitative"},
+          {"field": "Bronze", "type":"quantitative"}
+        ]
+   }
+}
