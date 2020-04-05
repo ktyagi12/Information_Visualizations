@@ -1,0 +1,151 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ktyagi12/Information_Visualizations/master/Arabica_Robusta_Coffee_Ratings/Arabica_Robusta_Coffee_Ratings.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "title": {
+    "text": "Coffee Species with varying quality measures over the years.",
+    "anchor": "middle",
+    "fontSize": 20
+  },
+  "repeat": [
+    "Aroma",
+    "Flavor",
+    "Acidity",
+    "Cupper_Points",
+    "Max_Altitude",
+    "Moisture"
+  ],
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14,
+      "titlePadding": 8
+    },
+    "legend": {
+      "orient": "right",
+      "titleFontSize": 14,
+      "labelFontSize": 10,
+      "padding": 3
+    }
+  },
+  "columns": 3,
+  "transform": [
+    {
+      "filter": "datum.Total_Cup_Points > 25"
+    },
+    {
+      "filter": {
+        "field": "Species",
+        "oneOf": [
+          "Arabica",
+          "Robusta"
+        ]
+      }
+    },
+    {
+      "filter": {
+        "field": "Harvest_Year",
+        "oneOf": [
+          2009,
+          2010,
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018
+        ]
+      }
+    }
+  ],
+  "spec": {
+    "layer": [
+      {
+        "mark": {
+          "type": "line"
+        },
+        "width": 250,
+        "height": 220,
+        "encoding": {
+          "x": {
+            "field": "Harvest_Year",
+            "type": "ordinal",
+            "scale": {
+              "zero": false
+            },
+            "axis": {
+              "title": "Harvest Year",
+              "labelAngle": -45,
+              "labelFontSize": 10
+            }
+          },
+          "y": {
+            "aggregate": "median",
+            "field": {
+              "repeat": "repeat"
+            },
+            "type": "quantitative",
+            "scale": {
+              "zero": false
+            }
+          },
+          "color": {
+            "type": "nominal",
+            "field": "Species",
+            "scale": {
+              "domain": [
+                "Arabica",
+                "Robusta"
+              ]
+            }
+          },
+          "opacity": {
+            "value": 0.5
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "line",
+          "point": true
+        },
+        "width": 250,
+        "height": 220,
+        "encoding": {
+          "x": {
+            "field": "Harvest_Year",
+            "type": "ordinal",
+            "scale": {
+              "zero": false
+            },
+            "axis": {
+              "title": "Harvest Year",
+              "labelAngle": -45,
+              "labelFontSize": 10
+            }
+          },
+          "y": {
+            "aggregate": "mean",
+            "field": {
+              "repeat": "repeat"
+            },
+            "type": "quantitative",
+            "scale": {
+              "zero": false
+            }
+          },
+          "color": {
+            "type": "nominal",
+            "field": "Species"
+          }
+        }
+      }
+    ]
+  }
+}

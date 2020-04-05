@@ -1,0 +1,107 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ktyagi12/Information_Visualizations/master/Arabica_Robusta_Coffee_Ratings/Country_Quality_Coffee_Growth_Chart.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "title": {
+    "text": "Top 5 Countries' Coffee Growth varying with Mean Altitude ",
+    "anchor": "middle",
+    "fontSize": 20
+  },
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14,
+      "titlePadding": 8
+    },
+    "legend": {
+      "orient": "right",
+      "labelFontSize": 10,
+      "padding": 3
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.Mean_Altitude>0"
+    }
+  ],
+  "width": 700,
+  "height": 500,
+  "encoding": {
+    "x": {
+      "field": "Country",
+      "type": "nominal",
+      "scale": {
+        "zero": false
+      },
+      "axis": {
+        "title": "Coffee producing Country",
+        "titleFontSize": 14,
+        "labelAngle": 0,
+        "labelFontSize": 14
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "tooltip": true,
+        "color": "#16A085"
+      },
+      "encoding": {
+        "y": {
+          "field": "Mean_Altitude",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          },
+          "axis": {
+            "title": "Mean Altitude (in meters)",
+            "titleFontSize": 14,
+            "titleColor": "#16A085",
+            "labelAngle": 0,
+            "labelFontSize": 12
+          }
+        },
+        "size": {
+          "value": 60
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "interpolate": "monotone",
+        "tooltip": true,
+        "color": "purple",
+        "point": true
+      },
+      "encoding": {
+        "y": {
+          "field": "Coffee_Growth",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          },
+          "axis": {
+            "titlePadding": 8,
+            "titleColor": "purple",
+            "title": "Coffee (in Kgs)","titleFontSize": 14,
+            "labelAngle": 0,
+            "labelFontSize": 12,
+            "labelPadding": 40
+          }
+        }
+      }
+    }
+  ],
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  }
+}
