@@ -1,0 +1,170 @@
+<html>
+   <head>
+      <title> Karishma Tyagi - Info Viz</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.9.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.0.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.2.1"></script>
+      <style>
+         body {
+         font-family: sans-serif;
+         }
+      </style>
+   </head>
+   <body>
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="vertical-align: top;"><strong>Dataset description:</strong></td>
+               <td style="vertical-align: top;"> Arabica and Robusta Coffee Ratings <br>
+               		<li>The Arabica Coffee Ratings and the Robusta Coffee Ratings datasets consists of the reviews from specialized reviewers for both coffees: Arabica and Robusta.</li> 
+               		<li>For each dataset, various Quality Measures are given such as:</li> 
+               			<ol>
+               				<li>Aroma</li>
+               				<li>Flavor</li>
+               				<li>Aftertaste</li>
+               				<li>Acidity</li>
+	               			<li>Body</li>
+	               			<li>Balance</li>
+	               			<li>Uniformity</li>
+	               			<li>Cup Cleanliness</li>
+	               			<li>Sweetness</li>
+	               			<li>Moisture</li>
+	               			<li>Defects and so on.</li>
+               		 	</ol>
+
+               		<li> Also the meta data related to the Bean comprises of:</li> 
+               		<ol>
+               			<li> Processing Method with which it is being made</li>
+               			<li> Color</li>
+               			<li> Species (arabica / robusta).</li>
+
+               		</ol>
+
+               		<li> At last the location details where the coffee beans are grown such as:</li> 
+               		<ol>
+               			<li> Owner</li>
+               			<li> Country of Origin</li>
+               			<li> Farm Name</li>
+               			<li> Lot Number</li>
+               			<li> Mill</li>
+               			<li> Company</li>
+               			<li> Altitude</li>
+               			<li> Region.</li>
+               		</ol>
+
+               		<li> Although the data for both the Coffees were separately provided, but I merged all the data post the Pre-processing.The Coffee dataset was too noisy and dirty. It required a lot of pre-processing steps before analysis.</li>
+               	
+               </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Initial questions</strong></td>
+               <td style="vertical-align: top;"> The initial question for this plot were:<br>
+                <li> Which all countries are the major producers of average number of coffee bags for both the species of Coffee?</li>
+                <li>What is the distribution for Robusta and Arabica species of coffee?</li></td>
+            </tr>
+         </tbody>
+      </table>
+      <hr />
+      <div id="vis"></div>
+      <hr />
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Description:&nbsp;</strong></td>
+               <td style="vertical-align: top;"> The following graph depicts: <br>
+               	<li>There are two species of Coffee : Arabica and Robusta. The bar graph shows the countries which are the major producers of the Arabica and Robusta coffee types.</li> <li> It describes the countries with average number of coffee bags. </li> </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Insight:</strong></td>
+               <td style="vertical-align: top;">
+               	<li> It is clearly evident from the graph that there are only 3 countries which produces the Robusta Species of Coffee. </li>
+               	<li> Out of which Uganda and India are the leading producers with a mere difference of 17K average Coffee Bags leaving behind the rest of the world.</li>
+               	<li> On the contrary, a large number of countries produces the species when it comes to the Arabica Coffee in a significant amount too. </li>
+               	<li> Also it is depicted clearly that almost top ten countries produces somewhere similar amount of Arabica Coffee. </li>
+               	<li> Nicaragua proves to be the maximum average number of coffee bags producing country accounting to 293K Arabica Coffee whereas Japan is at the lowest with only 20K Coffee bags. </li>
+               	<li> Various different visualizations are learnt to use and visualise the similar data but the best comes out to be Stacked Bar Graph.</li>
+
+               </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Design considerations</strong></td>
+               <td style="vertical-align: top;"> <li> To consider the design of the plot, encodings for the X axis consists of Country_of_Origin field which is a nominal attribute and the encodings for Y axis consists of a quantitative attribute Number of Coffee Bags.</li> 
+               <li> Further the Number of Coffee Bags attribute are aggregated on the Y axis itself. </li>
+               <li> All the countries production of Coffee Species is differentiated using the nominal value of Species having unique values like "Arabica" and "Robusta".</li> 
+               <li> Further a tooltip showing the Country and the corresponding average Number of Coffee Bags along with Coffee species is displayed.</li>
+               <li> The alternative designs to this design were grouped Bar graph which also depicts the same but since there are only 3 countries which produce the Robusta species of Coffee which will ultimately make the bars points to 0 for the rest of the countries.</li> 
+               <li> Another alternative design considered was vertical concat, but due to the lack of Robusta production, vertical bar design seems to be inconsistent.</li> 
+               <li> Bar graphs, also called as column charts, uses both vertical and horizontal bars to show the data along both an x-axis and a y-axis visually. Each bar point to some value.</li> 
+               <li> When the bars are stacked next to one another, it is easier to make the difference but when the number of categorical values on the X-axis are too much, Stacked Bar graph would be more efficient.</li> 
+               <li> A layering of Line graph showing the Robusta Coffee Species over the Bar Graph depicting the Arabica one was also tried as an alternative but a line graph over the bars shows as if all the countries produces both the types of Coffees. It may misguide the user while visualizing the graph</li> 
+               <li> So, a stacked bar graph is preffered. All the countries are independent to each other, hence plotted on the X-axis in a vertical graph.</li>
+               <li> Bar graphs displays the proportions of Arabica and Robusta Coffee efficiently for each and every country where the average of Number of Coffee Bags are more than twenty.</li>
+           </td>
+            </tr>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Data filtering and transformation:&nbsp;</strong></td>
+               <td style="vertical-align: top;">
+               	<li> Since there are huge number of countries which does not produce or which merely produces any Coffee irrespective of the species. So, instead of depicting all the countries, a filter is set on the Number of Bags produced.</li> 
+               	<li> When the Number of Bags are more than or equal to 20, only those countries are displayed through the bar graph. The Number of Coffee Bags are clearly differentiated by the various species of the Coffee.</li> 
+               	<li> More than 8 features of Coffee species were not at all rated. They all were NaN values which can highly impact the design and the efficiency of the analysis. So, in order to analyse the Coffee data features with no value at all are dropped from the dataset. </li>
+               	<li> Also there are a number of categorical features which are of less help for the current analysis say the Certification NA, NA.1, NA.2, Notes. Hence they are not considered over here.</li>
+               	<li> Agin there are inconsistencies in the naming conventions of the dataset. So the features are renamed for the ease of undersatnding of the user.</li>
+               	
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <script type="text/javascript">
+        var yourVlSpec =  {
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ktyagi12/Information_Visualizations/master/Arabica_Robusta_Coffee_Ratings/Arabica_Robusta_Coffee_Ratings.csv",
+    "format": {"type": "csv"}
+  },
+  "config": {
+    "axis": {"labelFontSize": 10, "titleFontSize": 12, "titlePadding": 12},
+    "legend": {"orient": "top-right", "titleFontSize": 14, "labelFontSize": 15}
+  },
+  "transform": [
+    {"filter": {"field": "Species", "oneOf": ["Arabica","Robusta"]}},
+    {"filter": "datum.Number_of_Bags>=20"}
+  ],
+  "mark": {"type": "bar","tooltip": true},
+  "title": {
+    "text": "Countries with Average Number of Coffee Bags",
+    "anchor": "middle",
+    "fontSize": 20
+  },"description": "This visualization depicts the maximum of average number of coffee species producing countries. Further they are segregated according to the coffee species they produce. There are two different types of Coffee: Arabica and Robusta. It gives an insight that there are hardly 3-4 countries that are the major producers of Robusto Coffee.",
+  "width": 700,
+  "height": 650,
+  "encoding": {
+    "y": {
+      "aggregate": "mean",
+      "field": "Number_of_Bags",
+      "type": "quantitative",
+      "axis": {
+        "title": "Average Number of Coffee Bags","titleFontSize":14,
+        "labelFontSize": 16,
+        "tickMinStep": 50
+      }
+    },
+    "x": {
+      "field": "Country_of_Origin",
+      "type": "nominal",
+      "sort": "y",
+      "axis": {
+        "title": "Country", 
+        "labelFontSize": 16, 
+        "labelAngle": -45,  
+        "titleFontSize":14
+        }
+    },
+    "color": {"field": "Species", "type": "nominal","legend": {
+        "title": "Coffee Species"
+      }}
+  }
+}
+            vegaEmbed("#vis", yourVlSpec);
+      </script>
+   </body>
+</html>

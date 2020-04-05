@@ -1,0 +1,245 @@
+<html>
+   <head>
+      <title> Karishma Tyagi - InfoViz3</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.9.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.0.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.2.1"></script>
+      <style>
+         body {
+         font-family: sans-serif;
+         }
+      </style>
+   </head>
+   <body>
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="vertical-align: top;"><strong>Dataset description:</strong></td>
+               <td style="vertical-align: top;"> Arabica and Robusta Coffee Ratings <br>
+               		<li>The Arabica Coffee Ratings and the Robusta Coffee Ratings datasets consists of the reviews from specialized reviewers for both coffees: Arabica and Robusta.</li> 
+               		<li>For each dataset, various Quality Measures are given such as:</li> 
+               			<ol>
+               				<li><b>Aroma:</b> A distinctive, typically pleasant smell.</li>
+               				<li><b>Flavor:</b> The distinctive taste of Coffee.</li>
+               				<li><b>Aftertaste:</b> Remaining taste in the mouth after drinking Coffee.</li>
+               				<li><b>Acidity:</b> Range of flavors perceived in coffee, attributed to acids in coffee beans.</li>
+	               			<li><b>Body:</b>  The physical properties of the coffee, mouthfeel: Oily, Greasy,Watery</li>
+	               			<li><b>Balance</b></li>
+	               			<li><b>Uniformity:</b> The consistency in coffee beans.</li>
+	               			<li><b>Cup Cleanliness</b></li>
+	               			<li><b>Sweetness:</b> A mild,smooth coffee flavor taste sensation without any harsh tastes </li>
+	               			<li><b>Moisture:</b> The moisture content in coffee beans.</li>
+	               			<li><b>Defects and so on.</b></li>
+               		 	</ol>
+
+               		<li> Also the meta data related to the Bean comprises of:</li> 
+               		<ol>
+               			<li> <b>Processing Method:</b> The method used to produce Coffee.</li>
+               			<li> <b>Color</b> The color of the coffee bean.</li>
+               			<li> <b>Species</b>Different types of Coffee. (Arabica / Robusta).</li>
+
+               		</ol>
+
+               		<li> At last the location details where the coffee beans are grown such as:</li> 
+               		<ol>
+               			<li> <b>Owner:</b> One who owns the farms for the Coffee farming.</li>
+               			<li> <b>Country of Origin:</b> Country where the coffee production takes place.</li>
+               			<li> <b>Farm Name:</b> Actual farm where coffee grows.</li>
+               			<li> <b>Lot Number:</b> It signifies the batch Number.</li>
+               			<li> <b>Mill:</b> The storage Mill where the coffee is stored.</li>
+               			<li> <b>Company:</b> Manufacturing company of Coffee.</li>
+               			<li> <b>Altitude:</b> Heights at which Coffee farming is done.</li>
+               			<li> <b>Region:</b> The specific region of country that grows Coffee.</li>
+               		</ol>
+
+               		<li> The data for both the types of Coffees is merged with all the common features. Pre-processing is done separately on both the datasets prior to merging.</li>
+               	
+               </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Initial questions</strong></td>
+               <td style="vertical-align: top;"> The initial questions for this plot were:<br>
+                <br> 1. After roasting, just about all coffees look the same but there are a number of parameters they vary on.
+Arabica and Robusta. These are the two fundamental coffee varieties that are grown for drinking. From the previous visualization, Arabica Coffee is believed to be the first species of coffee to be cultivated, and is the dominant cultivar, representing more than half of global production. It is apt to analyse now: How the Arabica and Robusta Coffee varies over the period of years ranging from 2009 till 2018 over multiple quality measures.</br>
+                <br> 2. How the mean and median of such quality measures varies over the years for both the Coffee Species? </br>
+                <br> 3. Are the species consistent on their quality or are they improving or deteriorating over the time span of 10 years? </br>
+            </td>
+            </tr>
+         </tbody>
+      </table>
+      <hr />
+      <div id="vis"></div>
+      <hr />
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Description:&nbsp;</strong></td>
+               <td style="vertical-align: top;"> 
+               	<br>A layered line graph depicting the trend of Arabica and Robusta Coffee for Mean and Median of various quality measures such as Aroma, Moisture, Acidity, Flavor, Cupper_Points and Max_Altitude across years commencing from 2009 till 2018 is plotted over here. </br>
+               	The above graph depicts a number of things: <br>
+               	<ol>
+               		<li> The light colored marked lines of both the Coffee species depicts the varying median of the various quality measures over years.</li> 
+               		<li> The dark colored marked lines of both the Coffee species depicts the varying mean of the various quality measures over years. </li> 
+               		<li> Every marked point on the line graph depicts the ratings from the specialized reviewers regarding the quality of Coffee species. </li> 
+               		<li> The blue line on the line graph represents the mass producing Arabica and orange depicts the rare one Robusta.</li> 
+				</ol>
+               	</td>
+               	
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Insights:</strong></td>
+               <td style="vertical-align: top;">
+               	<li> The first written record of coffee made from roasted coffee beans comes from Arab scholars, that's why it is named as Arabica. It is clearly evident from the graph that Arabica is the dominant cultivar even from the ancient times.</li>
+               	<li> Robusta comes to the picture very late as compared to the Arabica species.</li>
+               	<li> When comes to the case of Quality measures such as average Aroma ratings, average Flavour and the Acidic properties of the coffee, Arabica Coffee proves to be consistent throughout the years ranging from 2012 till now whereas there is a drastic shoot in all the 3 measures from 2009 to 2010. </li>
+               	<li> But Arabica is losing in terms of the average maximum altitude it can be grown at. It shows that harvesting of Arabica touches the peak at 4000 metre in 2017 with a drastic decline in 2018.</li>
+               	<li> Both the mean and median of all the quality measures are almost similarly varying over years except moisture content in case of Arabica. </li>
+               	<li> Lastly, when it comes to produce the average number of cupper points, there is a slow progress over the years for Arabica. </li>
+               	<li> High quality Arabica coffee have a slightly sweet flavor, with hints of chocolate. Also they contain slight/pleasant acidity.</li>
+               	<li> Most of the Arabica Coffee species is grown at around 1900 altitude above the sea level.</li>
+               	<li> Now comes the Robusta, it has stronger flavour, aroma and the acidic properties compared to Arabica species.</li>
+               	<li> On an average, Robusta species can be grown at around 1000 metres above the sea level. There is a drastic change in the moisture content in Robusta over the years. Thus making it beneficial because of ease of growth.</li>
+               	<li> Robusta Coffee has a characteristic tartness, flavour and greater mouthfeel.</li>
+               	<li> Various different visualizations are learnt to use and visualise the similar data but the best comes out to be Marked Line Graph over the other alternatives.</li>
+
+               </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Design considerations</strong></td>
+               <td style="vertical-align: top;"> <li> To consider the design of this plot, encodings for the X axis comprises of Harvesting Year (the years in which coffee if cultivated, harvested) of the coffee field which is a ordinal type of attribute.</li> <br>
+               <li>And for the Y axis, the encodings consists of a various quantitative attributes such as Aroma ratings of the coffee, Acidic properties of coffee beans, Sweetness (Coffee Flavour), the Moisture content in the coffee beans along with the maximum altitude at which coffee beans can be harvested.</li> <br>
+               <li> Using a repeat functionality, six different graphs for the trends of quality measures across the same years are plotted. </li>  <br>
+               <li> For the Y-axis , all the quality measures under consideration are aggregated by both Median and mean operations.</li>  <br>
+               <li> Further a 2 layered graph within each of the six graphs is displayed.</li>
+               		<ol>
+               			<li> The first layer within every graph is a line graph showing the consistencies, trends or anomalies in the median of the quality ratings of Coffee over the years ranging from 2009 to 2018. </li> <br>
+
+               			<li> The second layer within every graph is a line graph showing the consistencies, trends or anomalies in the average of the quality ratings of Coffee over the years ranging from 2009 to 2018. It shows how the average quality of the coffee varies till now over a decade.</li>
+               		</ol> <br>
+               <li> Further a tooltip showing the harvesting year along with the mean and median of quality measure with corressponding species is displayed.</li> <br>
+               <li> The species are color coded to clearly differentiates them.</li> <br>
+               
+               <li> The alternative designs tried earlier to this design were: <br>
+               	<ol>
+               		<li><b>Stacked Bar Graph:</b> For every harvesting year, 2 segments each of Coffee species depicting their quality measure ratings is displayed. Even a small difference within the values is not clearly visible due to the bars. </li> 
+               			Disadvantages: 
+               			<ul>
+               				<li> It becomes difficult to read each and every segment on the stacked bars if the number of segments to be compared are high. </li>
+               				<li> The number of years are ten, So ten segments are harder to be comapared over a single quality measure due to the non alignment of segments on a common baseline. Hence making the analysis difficult and the graph clumpsy.</li>
+               			</ul>
+
+               		<li><b>Scatter Plot: </b> A single point for every harvesting year is displayed using the scatter plot for both the species of the Coffee for a particular quality measure..</li>
+               			Disadvantages:
+               			<ul>
+               				<li> It becomes difficult to read each and every point of the scatter plot if the number of segments to be compared are high. </li>
+               				<li> The major issue with scatterplots is discretization of values. This happens when measurements are rounded off, or a data field is categorical.</li>
+               			</ul>
+               		<li>Line Graph over Stacked Bar Graph and Scatter Plot : </li>
+               			Advantages: <br>
+               			<ul>
+               				<li> Line graphs are easy to read and to plot.</li>
+               				<li> The marked points clearly depicts the comparison between the various harvesting years for various quality measures.</li>
+               				<li> The color coded marked line graph in layer 1 easily differentiates with the other layer in the front.</li>
+               				<li> A clear and accurate graph is visualised with large number of ordinal values to be compared over multiple quality measures.</li>
+               				<li> A line graph has the advantage of showing trends over time. Time is plotted on the horizontal or x axis, while the measuring change is plotted on the y or vertical axis.</li>
+               			</ul>
+               </ol>
+           </td>
+            </tr>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Data Filtering and Transformation:&nbsp;</strong></td>
+               <td style="vertical-align: top;">
+               	<li> There exists inconsistency among the Harvesting Year field, few contains mm-dd-yyyy format, other follows yy-mm-dd. So, the Harvesting_Year field is pre-processed such that it only extracts the year out of all.</li> 
+               	<li> Three transformations were made during the visualization: </li> 
+               		<ol> 
+               			<li> A filter on the Coffee Species is considered allowing only the fundamental species.</li>
+               			<li> All the uniques values of the Harvesting Year are fetched in Python and another filter on the Harvesting Year is created so as to consider only a (Top 10) latest decade rather than all the years in the past. </li>
+               			<li> Lastly only those species are considered which have a count of Total Cup Points greater than 25 so as to avoid the drastic changes in the harvesting years. </li>
+               		</ol>
+               	<li> The moisture content contains the symbol '%' in it. Transforming the Moisture content to numerical values. </li>
+               	<li> The opacity feature is introduced to differentiate even the slight changes between thw Median and Mean of the Quality Measures.</li>               	
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <script type="text/javascript">
+        var yourVlSpec =  {
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ktyagi12/Information_Visualizations/master/Arabica_Robusta_Coffee_Ratings/Country_Quality_Coffee_Growth_Chart.csv",
+    "format": {"type": "csv"}
+  },
+  "title": {
+    "text": "Coffee Species with varying quality measures over the years.",
+    "anchor": "middle",
+    "fontSize": 20
+  },
+  "config": {
+    "axis": {"labelFontSize": 12, "titleFontSize": 14, "titlePadding": 8},
+    "legend": {
+      "orient": "right",
+      "labelFontSize": 10,
+      "padding": 3
+    }
+  },
+  "transform": [{"filter": "datum.Mean_Altitude>0"}],
+  "width": 700,
+  "height": 500,
+  "encoding": {
+    "x": {
+      "field": "Country",
+      "type": "nominal",
+      "scale": {"zero": false},
+      "axis": {
+        "title": "Coffee producing Country",
+        "labelAngle": 0,
+        "labelFontSize": 14
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar", "tooltip": true, "color": "turquoise"},
+      "encoding": {
+        "y": {
+          "field": "Mean_Altitude",
+          "type": "quantitative",
+          "scale": {"zero": false},
+          "axis": {
+            "title": "Mean Altitude (in meters)", "titleFontSize": 12,
+            "labelAngle": 0,
+            "labelFontSize": 12
+          }
+        }, "size":{"value": 60}
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "interpolate": "monotone",
+        "tooltip": true,
+        "color": "purple",
+        "point": true
+      },
+      "encoding": {
+        "y": {
+          "field": "Coffee_Growth",
+          "type": "quantitative",
+          "scale": {"zero": false},
+          "axis": {
+            "titlePadding": 8,
+            "title": "Coffee (in Kgs)",
+            "labelAngle": 0,
+            "labelFontSize": 12,
+            "labelPadding":40
+          }
+        }
+      }
+    }
+  ],
+  "resolve": {"scale": {"y": "independent"}}
+}
+            vegaEmbed("#vis", yourVlSpec);
+      </script>
+   </body>
+</html>
