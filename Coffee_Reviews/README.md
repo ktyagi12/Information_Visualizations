@@ -4,6 +4,9 @@
 
 **AIM:** Three distinct visualisations illustrating some complex aspect of the Coffees.
 
+![arabica-robusta](https://user-images.githubusercontent.com/38240162/78574428-e6d20980-7821-11ea-80fa-70445842abfd.jpg)
+
+
 **DATASET:** Arabica and Robusta Coffee Ratings
 The Arabica Coffee Ratings and the Robusta Coffee Ratings datasets consists of the reviews from specialized reviewers for both coffees: Arabica and Robusta. 
 
