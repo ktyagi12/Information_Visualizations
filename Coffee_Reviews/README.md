@@ -60,12 +60,17 @@ The Arabica Coffee Ratings and the Robusta Coffee Ratings datasets consists of t
 3. Are the species consistent on their quality or are they improving or deteriorating over the time span of 10 years? 
 
 *Visualisation 3:*
-1. After roasting, just about all coffees look the same but there are a number of parameters they vary on. Arabica and Robusta. These are the two fundamental coffee varieties that are grown for drinking. From the previous visualization, Arabica Coffee is believed to be the first species of coffee to be cultivated, and is the dominant cultivar, representing more than half of global production. It is apt to analyse now: How the Arabica and Robusta Coffee varies over the period of years ranging from 2009 till 2018 over multiple quality measures.
 
-2. How the mean and median of such quality measures varies over the years for both the Coffee Species? 
+The height and climate of the farm can impact the type of coffee a farmer may choose to plant. Farmers thus selects their coffee plant variety according to their climate, elevation they are at. It is apt to analyse now: 
+1. How the coffee growth in any country varies over the altitude ?
 
-3. Are the species consistent on their quality or are they improving or deteriorating over the time span of 10 years?
+2. Which country is capable of supporting coffee growth at maximum altitudes ?
 
+3. Which is the mean altitude (in meters)optimum for mass coffee production ? 
+
+4. How much amount of coffee (in kgs) can be grown at various altitude levels and how their growth varies in the top five coffee growing countries?
+
+5. What is the mean altitude for countires to grow Coffee in bulk amount ?
 
 [Click here for the code](https://github.com/ktyagi12/Information_Visualizations/tree/master/Coffee_Reviews/code)
 
