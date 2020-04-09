@@ -1,6 +1,6 @@
 <html>
    <head>
-      <title> Karishma Tyagi - InfoViz3</title>
+      <title> Karishma Tyagi - Assignment</title>
     <script src="https://cdn.jsdelivr.net/npm/vega@5.9.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.0.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.2.1"></script>
@@ -14,9 +14,17 @@
       <table style="width: 850px;" cellspacing="5" cellpadding="5">
          <tbody>
             <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Name:&nbsp;</strong></td>
+               <td style="vertical-align: top;">Karishma Tyagi</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Student Number:</strong></td>
+               <td style="vertical-align: top;">19200768</td>
+            </tr>
+            <tr>
                <td style="vertical-align: top;"><strong>Dataset description:</strong></td>
-               <td style="vertical-align: top;"> Arabica and Robusta Coffee Ratings <br>
-               		<li>The Arabica Coffee Ratings and the Robusta Coffee Ratings datasets consists of the reviews from specialized reviewers for both coffees: Arabica and Robusta.</li> 
+               <td style="vertical-align: top;"> <b>Arabica and Robusta Coffee Ratings </b><br>
+               		<li>The Arabica Coffee Ratings and the Robusta Coffee Ratings datasets consists of the reviews from specialized reviewers for both coffees: Arabica and Robusta.</li> <br>
                		<li>For each dataset, various Quality Measures are given such as:</li> 
                			<ol>
                				<li><b>Aroma:</b> A distinctive, typically pleasant smell.</li>
@@ -52,17 +60,19 @@
                			<li> <b>Region:</b> The specific region of country that grows Coffee.</li>
                		</ol>
 
-               		<li> The data for both the types of Coffees is merged with all the common features. Pre-processing is done separately on both the datasets prior to merging.</li>
+               		<li> The data for both the types of Coffees is merged with all the common features. Pre-processing is done separately on both the datasets prior to merging.</li> <br>
+               		<li> Out of all the features of coffee, a set of features are extracted and it consists of top five countries with their average coffee growth (kg), specific coffee species they grow, quality score, mean altitude (meters) at which the coffee growth is measured. </li>
                	
                </td>
             </tr>
             <tr>
                <td style="vertical-align: top;"><strong>Initial questions</strong></td>
                <td style="vertical-align: top;"> The initial questions for this plot were:<br>
-                <br> 1. After roasting, just about all coffees look the same but there are a number of parameters they vary on.
-Arabica and Robusta. These are the two fundamental coffee varieties that are grown for drinking. From the previous visualization, Arabica Coffee is believed to be the first species of coffee to be cultivated, and is the dominant cultivar, representing more than half of global production. It is apt to analyse now: How the Arabica and Robusta Coffee varies over the period of years ranging from 2009 till 2018 over multiple quality measures.</br>
-                <br> 2. How the mean and median of such quality measures varies over the years for both the Coffee Species? </br>
-                <br> 3. Are the species consistent on their quality or are they improving or deteriorating over the time span of 10 years? </br>
+                <br> 1.  The height and climate of the farm can impact the type of coffee a farmer may choose to plant. Farmers thus selects their coffee plant variety according to their climate, elevation they are at. It is apt to analyse now: How the coffee growth in any country varies over the altitude ?</br>
+                <br> 2. Which country is capable of supporting coffee growth at maximum altitudes ? </br>
+                <br> 3. Which is the mean altitude (in meters)optimum for mass coffee production ? </br>
+                <br> 4. How much amount of coffee (in kgs) can be grown at various altitude levels and how their growth varies in the top five coffee growing countries ? </br>
+                <br> 5. What is the mean altitude for countires to grow Coffee in bulk amount ? </br>
             </td>
             </tr>
          </tbody>
@@ -75,13 +85,13 @@ Arabica and Robusta. These are the two fundamental coffee varieties that are gro
             <tr>
                <td style="width: 200px; vertical-align: top;"><strong>Description:&nbsp;</strong></td>
                <td style="vertical-align: top;"> 
-               	<br>A layered line graph depicting the trend of Arabica and Robusta Coffee for Mean and Median of various quality measures such as Aroma, Moisture, Acidity, Flavor, Cupper_Points and Max_Altitude across years commencing from 2009 till 2018 is plotted over here. </br>
+               	<br>A layered graph with the top five coffee growing countries along with their altitude and the amount of coffee grown in these countries is plotted over here. </br>
                	The above graph depicts a number of things: <br>
                	<ol>
-               		<li> The light colored marked lines of both the Coffee species depicts the varying median of the various quality measures over years.</li> 
-               		<li> The dark colored marked lines of both the Coffee species depicts the varying mean of the various quality measures over years. </li> 
-               		<li> Every marked point on the line graph depicts the ratings from the specialized reviewers regarding the quality of Coffee species. </li> 
-               		<li> The blue line on the line graph represents the mass producing Arabica and orange depicts the rare one Robusta.</li> 
+               		<li> The first layer is about the highest coffee growing countries and their mean altitude (in meters) at which they grow coffee. Every single bar represents one country and every bar points to its mean altitude.</li> <br>
+               		<li> The next layer is about the highest coffee growing countries and their mean coffee growth (in kgs) across all the years. Every mark on the line depicts the mean amount of coffee for each country listed at the X- axis. </li> <br>
+               		<li> Both the layers combined together depicts the country with their mean altitude (in meters) and the amount of coffee (in kgs) they grow.  </li> 
+               		
 				</ol>
                	</td>
                	
@@ -89,59 +99,45 @@ Arabica and Robusta. These are the two fundamental coffee varieties that are gro
             <tr>
                <td style="vertical-align: top;"><strong>Insights:</strong></td>
                <td style="vertical-align: top;">
-               	<li> The first written record of coffee made from roasted coffee beans comes from Arab scholars, that's why it is named as Arabica. It is clearly evident from the graph that Arabica is the dominant cultivar even from the ancient times.</li>
-               	<li> Robusta comes to the picture very late as compared to the Arabica species.</li>
-               	<li> When comes to the case of Quality measures such as average Aroma ratings, average Flavour and the Acidic properties of the coffee, Arabica Coffee proves to be consistent throughout the years ranging from 2012 till now whereas there is a drastic shoot in all the 3 measures from 2009 to 2010. </li>
-               	<li> But Arabica is losing in terms of the average maximum altitude it can be grown at. It shows that harvesting of Arabica touches the peak at 4000 metre in 2017 with a drastic decline in 2018.</li>
-               	<li> Both the mean and median of all the quality measures are almost similarly varying over years except moisture content in case of Arabica. </li>
-               	<li> Lastly, when it comes to produce the average number of cupper points, there is a slow progress over the years for Arabica. </li>
-               	<li> High quality Arabica coffee have a slightly sweet flavor, with hints of chocolate. Also they contain slight/pleasant acidity.</li>
-               	<li> Most of the Arabica Coffee species is grown at around 1900 altitude above the sea level.</li>
-               	<li> Now comes the Robusta, it has stronger flavour, aroma and the acidic properties compared to Arabica species.</li>
-               	<li> On an average, Robusta species can be grown at around 1000 metres above the sea level. There is a drastic change in the moisture content in Robusta over the years. Thus making it beneficial because of ease of growth.</li>
-               	<li> Robusta Coffee has a characteristic tartness, flavour and greater mouthfeel.</li>
-               	<li> Various different visualizations are learnt to use and visualise the similar data but the best comes out to be Marked Line Graph over the other alternatives.</li>
-
+               	<li> It is clearly evident from the graph that the altitude at which a bean is grown has an important role to play when it comes to the quality and the amount of beans produced.</li> <br>
+               	<li> Higher altitude's cooler temperatures slow down the growth rate of the coffee plant and at a slower growth rate, the coffee plants focuses more on reproduction. Thus more energy can be invested by the the plants to bean production which in turn produces large amount of sugars required to create tasting notes in the coffee. </li> <br>
+               	<li> Another insights that can be derived from this visualization is: Higher elevations too have better drainage than places at low level in the watershed. 
+ 					And if low amount of water is provided to the coffee bean, more concentrating flavors can be created by the sugars.</li> <br>
+ 				<li> Taiwan comes out to be at the least level with a mean altitude of 680 meters with a productioon of 571 kgs of Coffee. </li> <br>
+ 				<li> Gautenemala is the country which is capable of harvesting coffee at the maximum altitude of 3784 meters with a significant amount of 11970 kgs of coffee.</li> <br>
+ 				<li> Columbia proves to be an exception with low altitude of 1265 meters and maximum amount 14319 kgs of coffee produced.</li> <br>
                </td>
             </tr>
             <tr>
                <td style="vertical-align: top;"><strong>Design considerations</strong></td>
-               <td style="vertical-align: top;"> <li> To consider the design of this plot, encodings for the X axis comprises of Harvesting Year (the years in which coffee if cultivated, harvested) of the coffee field which is a ordinal type of attribute.</li> <br>
-               <li>And for the Y axis, the encodings consists of a various quantitative attributes such as Aroma ratings of the coffee, Acidic properties of coffee beans, Sweetness (Coffee Flavour), the Moisture content in the coffee beans along with the maximum altitude at which coffee beans can be harvested.</li> <br>
+               <td style="vertical-align: top;"> <li> To consider the design of this plot, encodings for the X axis comprises of five countries producing massive amount of coffee, which is a nominal type of attribute. All the countries considered are not assumed, they are chosen after whole process of pre-processing with maximum value counts in the group.</li> <br>
+               
+               <li> And for the Y axis, 2 encodings are incorporated in the data using the layering functionality. </li> <br>
                <li> Using a repeat functionality, six different graphs for the trends of quality measures across the same years are plotted. </li>  <br>
                <li> For the Y-axis , all the quality measures under consideration are aggregated by both Median and mean operations.</li>  <br>
                <li> Further a 2 layered graph within each of the six graphs is displayed.</li>
                		<ol>
-               			<li> The first layer within every graph is a line graph showing the consistencies, trends or anomalies in the median of the quality ratings of Coffee over the years ranging from 2009 to 2018. </li> <br>
+               			<li> The first layer within the graph is a bar graph pointing to the mean altitude values for countries. </li> <br>
 
-               			<li> The second layer within every graph is a line graph showing the consistencies, trends or anomalies in the average of the quality ratings of Coffee over the years ranging from 2009 to 2018. It shows how the average quality of the coffee varies till now over a decade.</li>
+               			<li> The second layer within the graph is a marked line graph displaying the average amount of coffee produced corresponding to the mean altitude of the country.</li>
                		</ol> <br>
-               <li> Further a tooltip showing the harvesting year along with the mean and median of quality measure with corressponding species is displayed.</li> <br>
-               <li> The species are color coded to clearly differentiates them.</li> <br>
-               
+               <li> Further two tooltips each for a Y-axis, one depicts the country with its corresponding Mean altitude value and other depicting the country with its corresponding amount of Coffee produced are provided.</li> <br>
+               <li> Both the Y-axis encodings are color coded to clearly display both the aspects for every country.</li> <br>
                <li> The alternative designs tried earlier to this design were: <br>
                	<ol>
-               		<li><b>Stacked Bar Graph:</b> For every harvesting year, 2 segments each of Coffee species depicting their quality measure ratings is displayed. Even a small difference within the values is not clearly visible due to the bars. </li> 
+               		<li><b> A layered bar graph</b> For every country, 2 segments each of mean altitude and mean amount of coffee produced are taken as bar for both the Y-axis encodings.</li> 
                			Disadvantages: 
                			<ul>
-               				<li> It becomes difficult to read each and every segment on the stacked bars if the number of segments to be compared are high. </li>
-               				<li> The number of years are ten, So ten segments are harder to be comapared over a single quality measure due to the non alignment of segments on a common baseline. Hence making the analysis difficult and the graph clumpsy.</li>
+               				<li> Both the bars were overlapping, hence it was difficult to read the values of Mean Altitude and Average amount of coffee produced for a country. </li>
+               				<li> Even if changing the bar size doesn't make much difference. It is as good as two layered line graphs. </li>
                			</ul>
 
-               		<li><b>Scatter Plot: </b> A single point for every harvesting year is displayed using the scatter plot for both the species of the Coffee for a particular quality measure..</li>
-               			Disadvantages:
-               			<ul>
-               				<li> It becomes difficult to read each and every point of the scatter plot if the number of segments to be compared are high. </li>
-               				<li> The major issue with scatterplots is discretization of values. This happens when measurements are rounded off, or a data field is categorical.</li>
-               			</ul>
-               		<li>Line Graph over Stacked Bar Graph and Scatter Plot : </li>
+               		<li>Two layered Graph with both bar and line: </li>
                			Advantages: <br>
                			<ul>
-               				<li> Line graphs are easy to read and to plot.</li>
-               				<li> The marked points clearly depicts the comparison between the various harvesting years for various quality measures.</li>
-               				<li> The color coded marked line graph in layer 1 easily differentiates with the other layer in the front.</li>
-               				<li> A clear and accurate graph is visualised with large number of ordinal values to be compared over multiple quality measures.</li>
-               				<li> A line graph has the advantage of showing trends over time. Time is plotted on the horizontal or x axis, while the measuring change is plotted on the y or vertical axis.</li>
+               				<li> Line over bar layer are easy to read and to plot.</li>
+               				<li> The marked points clearly depicts the amount of coffe produced corresponding to the year. </li>
+               				<li> The color coded axis titles easily tells that bar corresponds to the mean altitude on one of the Y-axis and line corresponds to corresponding amount of coffee produced for a country.</li>
                			</ul>
                </ol>
            </td>
@@ -149,15 +145,29 @@ Arabica and Robusta. These are the two fundamental coffee varieties that are gro
             <tr>
                <td style="width: 200px; vertical-align: top;"><strong>Data Filtering and Transformation:&nbsp;</strong></td>
                <td style="vertical-align: top;">
-               	<li> There exists inconsistency among the Harvesting Year field, few contains mm-dd-yyyy format, other follows yy-mm-dd. So, the Harvesting_Year field is pre-processed such that it only extracts the year out of all.</li> 
-               	<li> Three transformations were made during the visualization: </li> 
+               	<li> In order to get the top five coffee growing countries, the initial dataset is grouped together on the basis of Country available.</li> <br>
+               	<li> Further on the basis of their value counts, the five countries with maximum count of records are chosen. </li> <br>
+               	<li> Within every group of country, only few of the attributes are considered, rest are dropped from the group.</li> <br>
+               	<li> The considered attributes are: Coffee Species teh country produce, Quality_Score, Country_of_Origin, Number_of_Bags of coffee produced, Weight of each coffee bag produced, minimum elevation at which the coffee is grown (Min_Altitude), and maximum elevation at which the coffee can be grown (Max_Altitude)</li> <br>
+				<li> There were inconsistencies among the weights of the coffee bags (Some were in lbs, few in kgs). Hence all the weights throughout the data are transformed in a single unit. </li> <br>
+				<li> A copy of the Bag_Weight attribute is created in the dataset, and only the numerical value of weight is extracted from the Bag_Weight field (60 lb -> 60) using str.extract functioanlity of Python. </li><br>
+				<li> Further iterating over all the rows and checking for the existence of the string 'lb' in the Copy field of Bag_Weight</li>
+				<ol> 
+					<li> If 'lb' exists in the copy of bag weight column: then the numeric value from the Bag_Weight is transformed in float type and multiplied with a factor of 0.45 in order to convert the weights in lb to kgs.</li>
+				</ol>
+               	<li> Further two calculated fields are computed. </li>
+               	<ol> 
+               		<li> Coffee_Growth field which is computed as the product of Number_of_Bags and the Bag_Weight for every group.</li>
+               		<li> Mean_Altitude field which is computed as the average of Min_Altitude and Max_Altitude for every group.</li>
+               	</ol>
+               	<li> Now the required fields are Coffee_Growth, Mean_Altitude, Species, Country_of_Origin. So rest all attributes are removed from the dataset.</li> <br>
+               	<li> Then for each group (i.e Country), the amount of Coffee_Growth, Quality_Score and the Altitude are averaged.</li> <br>
+
+               	<li> Further one filter is incorporated in the data: </li> 
                		<ol> 
-               			<li> A filter on the Coffee Species is considered allowing only the fundamental species.</li>
-               			<li> All the uniques values of the Harvesting Year are fetched in Python and another filter on the Harvesting Year is created so as to consider only a (Top 10) latest decade rather than all the years in the past. </li>
-               			<li> Lastly only those species are considered which have a count of Total Cup Points greater than 25 so as to avoid the drastic changes in the harvesting years. </li>
-               		</ol>
-               	<li> The moisture content contains the symbol '%' in it. Transforming the Moisture content to numerical values. </li>
-               	<li> The opacity feature is introduced to differentiate even the slight changes between thw Median and Mean of the Quality Measures.</li>               	
+               			<li> A filter on the Mean_Altitude is considered allowing only the positive values of it.</li>
+              		</ol>
+
                </td>
             </tr>
          </tbody>
@@ -167,31 +177,44 @@ Arabica and Robusta. These are the two fundamental coffee varieties that are gro
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "data": {
     "url": "https://raw.githubusercontent.com/ktyagi12/Information_Visualizations/master/Arabica_Robusta_Coffee_Ratings/Country_Quality_Coffee_Growth_Chart.csv",
-    "format": {"type": "csv"}
+    "format": {
+      "type": "csv"
+    }
   },
   "title": {
-    "text": "Coffee Species with varying quality measures over the years.",
+    "text": "Top 5 Countries' Coffee Growth varying with Mean Altitude ",
     "anchor": "middle",
     "fontSize": 20
   },
   "config": {
-    "axis": {"labelFontSize": 12, "titleFontSize": 14, "titlePadding": 8},
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14,
+      "titlePadding": 8
+    },
     "legend": {
       "orient": "right",
       "labelFontSize": 10,
       "padding": 3
     }
   },
-  "transform": [{"filter": "datum.Mean_Altitude>0"}],
+  "transform": [
+    {
+      "filter": "datum.Mean_Altitude>0"
+    }
+  ],
   "width": 700,
   "height": 500,
   "encoding": {
     "x": {
       "field": "Country",
       "type": "nominal",
-      "scale": {"zero": false},
+      "scale": {
+        "zero": false
+      },
       "axis": {
         "title": "Coffee producing Country",
+        "titleFontSize": 14,
         "labelAngle": 0,
         "labelFontSize": 14
       }
@@ -199,18 +222,29 @@ Arabica and Robusta. These are the two fundamental coffee varieties that are gro
   },
   "layer": [
     {
-      "mark": {"type": "bar", "tooltip": true, "color": "turquoise"},
+      "mark": {
+        "type": "bar",
+        "tooltip": true,
+        "color": "#16A085"
+      },
       "encoding": {
         "y": {
           "field": "Mean_Altitude",
           "type": "quantitative",
-          "scale": {"zero": false},
+          "scale": {
+            "zero": false
+          },
           "axis": {
-            "title": "Mean Altitude (in meters)", "titleFontSize": 12,
+            "title": "Mean Altitude (in meters)",
+            "titleFontSize": 14,
+            "titleColor": "#16A085",
             "labelAngle": 0,
             "labelFontSize": 12
           }
-        }, "size":{"value": 60}
+        },
+        "size": {
+          "value": 50
+        }
       }
     },
     {
@@ -225,19 +259,26 @@ Arabica and Robusta. These are the two fundamental coffee varieties that are gro
         "y": {
           "field": "Coffee_Growth",
           "type": "quantitative",
-          "scale": {"zero": false},
+          "scale": {
+            "zero": false
+          },
           "axis": {
             "titlePadding": 8,
-            "title": "Coffee (in Kgs)",
+            "titleColor": "purple",
+            "title": "Average Coffee (in Kgs)","titleFontSize": 14,
             "labelAngle": 0,
             "labelFontSize": 12,
-            "labelPadding":40
+            "labelPadding": 40
           }
         }
       }
     }
   ],
-  "resolve": {"scale": {"y": "independent"}}
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  }
 }
             vegaEmbed("#vis", yourVlSpec);
       </script>
