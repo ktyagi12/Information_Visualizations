@@ -1,5 +1,7 @@
 LONDON OLYMPICS ATHLETES: Information Visualisation: VEGALITE
 
+![image](https://user-images.githubusercontent.com/38240162/79466308-500d0600-7ff4-11ea-9871-38007f7680a8.png)
+
 TECHNOLOGY USED: Vegalite
 
 TASKS:
