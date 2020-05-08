@@ -1,0 +1,20 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/colmr/vis_class/master/primary_schools.csv",
+    "format": {"type": "csv"}
+  },
+  "width": 600,
+  "height": 200,
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "bin": {"step": 20},
+      "field": "Total",
+      "type": "quantitative",
+      "title": "Number of Students"
+    },
+    "y": {"aggregate": "count", "type": "quantitative", "title": "Schools"},
+    "color": {"value": "black"}
+  }
+}

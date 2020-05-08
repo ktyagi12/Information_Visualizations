@@ -1,0 +1,199 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": {
+    "text": "Irish Primary Schools Explorer",
+    "fontSize": 30,
+    "anchor": "middle"
+  },
+  "description": "First Viz: Through the topojson type of data, a geoshaped map is built initially and on top of it, a point map is layered over with the latitude and longitude given. Every point represents an Irish school. The point map is further differentiated based on the Sex field (Boys, Girls and Mixed). Lastly the size of every point is mapped to the discretized value of range. Second Viz: A layered bar graph with count of the field Roll No on the y axis and the Total number of students on the x.  Third Viz: A stacked bar graph with County on the y axis and the count of schools on x axis. A color sequence is defined with Boys at first, then Girls and then Mixed. Once all the static visualizations are ready, they are concatenated vertically(point map and layered bar graph) and horizontally ((point map and layered bar graph) and stacked bar graph.) The structure becomes ready. Now the interactions: First interaction on point map: A selection filter named as sexSelection is defined which when clicked single on the field Sex, will display the output of that corressponding category only. The filter is bind with the legend and resolved globally. Second interaction on the layered bar graph: A brush selection named as brush_drag is created of interval type, so that you can select the number of students on the graph. Third interaction on the stacked bar graph: A selection filter named as countySelection is defined which selected multiple Counties will display the output of those selected Counties, resolved globally. In the end, all the filters are applied to all three visualizations and an interactive dashboard is ready to visualize. ",
+  "hconcat": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/colmr/vis_class/master/primary_schools.csv"
+      },
+      "transform": [
+        {
+          "calculate": "if(datum.Sex === 'Mixed', 0, if(datum.Sex === 'Girls', 1, 2))",
+          "as": "colorSequence"
+        },
+        {"filter": {"selection": "brush_drag"}},
+        {"filter": {"selection": "sexSelection"}}
+      ],
+      "width": 120,
+      "height": 830,
+      "mark": { "type": "bar", "tooltip": true} ,
+      "selection": {
+        "sexSelection": {
+          "type": "single",
+          "fields": ["Sex"],
+          "bind": "legend",
+          "resolve": "global"
+        },
+        "countySelection": {
+          "type": "multi",
+          "fields": ["County"],
+          "resolve": "global"
+        }
+      },
+      "encoding": {
+        "x": {
+          "aggregate": "count",
+          "type": "quantitative",
+          "title": "Number of Schools",
+          "axis": {
+            "labelFontSize": 12,
+            "titleFontSize": 14,
+            "labelFontWeight": "bold",
+            "titleFontWeight": "bold"
+          }
+        },
+        "y": {
+          "field": "County",
+          "type": "nominal",
+          "title": null,
+          "axis": {
+            "labelFontSize": 14,
+            "titleFontSize": 14,
+            "labelFontWeight": "bold"
+          }
+        },
+        "order": {"field": "colorSequence", "type": "quantitative"},
+        "color": {
+          "field": "Sex",
+          "scale": {"range": ["#E73823", "#6b00fc", "#5E87CA"]},
+          "type": "nominal"
+        },
+        "opacity": {
+          "condition": {"selection": "countySelection", "value": 1},
+          "value": 0.3
+        }
+      }
+    },
+    {
+      "vconcat": [
+        {
+          "layer": [
+            {
+              "data": {
+                "url": "https://raw.githubusercontent.com/colmr/vis_class/master/Ireland_custom_topjson.json",
+                "format": {"type": "topojson", "feature": "IRL_adm1"}
+              },
+              "width": 600,
+              "height": 600,
+              "projection": {"type": "conicConformal"},
+              "mark": {"type": "geoshape", "stroke": "white", "fill": "#ddd", "tooltip": true}
+            },
+            {
+              "data": {
+                "url": "https://raw.githubusercontent.com/colmr/vis_class/master/primary_schools.csv"
+              },
+              "transform": [
+                {"filter": {"selection": "countySelection"}},
+                {"filter": {"selection": "brush_drag"}}
+              ],
+              "mark": {"type": "circle", "fillOpacity": 0.8, "tooltip": true},
+              "encoding": {
+                "longitude": {"field": "Long", "type": "quantitative"},
+                "latitude": {"field": "Lat", "type": "quantitative"},
+                "color": {
+                  "field": "Sex",
+                  "type": "nominal",
+                  "scale": {"range": ["#E73823", "#6b00fc", "#5E87CA"]}
+                },
+                "size": {
+                  "field": "Total",
+                  "type": "quantitative",
+                  "scale": {
+                    "type": "threshold",
+                    "range": [25, 100, 200, 400],
+                    "domain": [251, 501, 750]
+                  }
+                },
+                "opacity": {
+                  "condition": {"selection": "sexSelection", "value": 1},
+                  "value": 0
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/colmr/vis_class/master/primary_schools.csv",
+            "format": {"type": "csv"}
+          },
+          "width": 600,
+          "height": 200,
+          "layer": [
+            {
+              "selection": {
+                "brush_drag": {"type": "interval", "encodings": ["x"]}
+              },
+              "mark": {"type": "bar", "tooltip": true},
+              "transform": [
+                {"filter": {"selection": "sexSelection"}},
+                {"filter": {"selection": "countySelection"}}
+              ],
+              "encoding": {
+                "x": {
+                  "bin": {"step": 20},
+                  "field": "Total",
+                  "type": "quantitative",
+                  "title": "Number of Students",
+                  "axis": {
+                    "labelFontSize": 12,
+                    "titleFontSize": 14,
+                    "labelFontWeight": "bold",
+                    "titleFontWeight": "bold"
+                  }
+                },
+                "y": {
+                  "aggregate": "count",
+                  "type": "quantitative",
+                  "title": "Schools"
+                },
+                "color": {"value": "#ddd"}
+              }
+            },
+            {
+              "transform": [
+                {"filter": {"selection": "sexSelection"}},
+                {"filter": {"selection": "brush_drag"}},
+                {"filter": {"selection": "countySelection"}}
+              ],
+              "mark": {"type": "bar", "tooltip": true},
+              "encoding": {
+                "x": {
+                  "field": "Total",
+                  "type": "quantitative",
+                  "bin": {"step": 20},
+                  "title": "Number of Students"
+                },
+                "y": {
+                  "field": "Roll_No",
+                  "aggregate": "count",
+                  "type": "quantitative",
+                  "title": "Schools",
+                  "axis": {
+                    "labelFontSize": 12,
+                    "titleFontSize": 14,
+                    "labelFontWeight": "bold",
+                    "titleFontWeight": "bold"
+                  }
+                },
+                "color": {"value": "black"}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "config": {
+    "legend": {
+      "labelFontSize": 16,
+      "labelFontWeight": "bold",
+      "titleFontSize": 18
+    }
+  }
+}

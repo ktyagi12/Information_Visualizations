@@ -1,0 +1,30 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/colmr/vis_class/master/primary_schools.csv"
+  },
+  "width": 100,
+  "height": 600,
+  "transform": [
+    {
+      "calculate": "if(datum.Sex === 'Mixed', 0, if(datum.Sex === 'Girls', 1, 2))",
+      "as": "colorOrder"
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "y": {"field": "County", "type": "nominal", "title": ""},
+    "x": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "title": "Number of Schools"
+    },
+    "color": {
+      "field": "Sex",
+      "type": "nominal",
+      "scale": {"range": ["purple", "#ff0000", "teal"]},
+      "legend": null
+    },
+    "order": {"field": "colorOrder", "type": "quantitative"}
+  }
+}

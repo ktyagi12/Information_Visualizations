@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/colmr/vis_class/master/Ireland_custom_topjson.json",
+    "format": {"type": "topojson", "feature": "IRL_adm1"}
+  },
+  "width": 600,
+  "height": 600,
+  "projection": {"type": "conicConformal"},
+  "title": {"text": "Irish Primary Schools Explorer", "fontSize": 22},
+  "layer": [
+    {"mark": {"type": "geoshape", "stroke": "white", "fill": "#ccc"}},
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/colmr/vis_class/master/primary_schools.csv"
+      },
+      "mark": "circle",
+      "encoding": {
+        "longitude": {"field": "Long", "type": "quantitative"},
+        "latitude": {"field": "Lat", "type": "quantitative"},
+        "color": {
+          "field": "Sex",
+          "type": "nominal",
+          "scale": {"range": ["#B82B25", "#48359F", "#C742A7"]}
+        },
+        "size": {
+          "field": "Total",
+          "type": "quantitative",
+          "scale": {
+            "range": [25, 50, 75, 100],
+            "domain": [251, 501, 750],
+            "type": "threshold"
+          }
+        }
+      }
+    }
+  ],
+  "config": {"legend": {"titleFontSize": 12, "labelFontSize": 12}}
+}

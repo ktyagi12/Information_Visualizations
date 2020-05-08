@@ -1,0 +1,104 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": {
+    "text": "Irish Primary Schools Explorer",
+    "fontSize": 28,
+    "anchor": "middle"
+  },
+  "hconcat": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/colmr/vis_class/master/primary_schools.csv"
+      },
+      "width": 120,
+      "height": 830,
+      "transform": [
+        {
+          "calculate": "if(datum.Sex === 'Mixed', 0, if(datum.Sex === 'Girls', 1, 2))",
+          "as": "colorOrder"
+        }
+      ],
+      "mark": "bar",
+      "encoding": {
+        "y": {"field": "County", "type": "nominal", "title": ""},
+        "x": {
+          "aggregate": "count",
+          "type": "quantitative",
+          "title": "Number of Schools"
+        },
+        "color": {
+          "field": "Sex",
+          "type": "nominal",
+          "scale": {"range": ["purple", "#ff0000", "teal"]}
+        },
+        "order": {"field": "colorOrder", "type": "quantitative"}
+      }
+    },
+    {
+      "vconcat": [
+        {
+          "layer": [
+            {
+              "data": {
+                "url": "https://raw.githubusercontent.com/colmr/vis_class/master/Ireland_custom_topjson.json",
+                "format": {"type": "topojson", "feature": "IRL_adm1"}
+              },
+              "width": 600,
+              "height": 650,
+              "projection": {"type": "conicConformal"},
+              "mark": {"type": "geoshape", "stroke": "white", "fill": "#ccc"}
+            },
+            {
+              "data": {
+                "url": "https://raw.githubusercontent.com/colmr/vis_class/master/primary_schools.csv"
+              },
+              "mark": "circle",
+              "encoding": {
+                "longitude": {"field": "Long", "type": "quantitative"},
+                "latitude": {"field": "Lat", "type": "quantitative"},
+                "color": {
+                  "field": "Sex",
+                  "type": "nominal",
+                  "scale": {"range": ["purple", "#ff0000", "teal"]},
+                  "legend": {"labelFontSize": 12, "labelOpacity": 1}
+                },
+                "size": {
+                  "field": "Total",
+                  "type": "quantitative",
+                  "scale": {
+                    "range": [25, 50, 75, 100],
+                    "domain": [251, 501, 750],
+                    "type": "threshold"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/colmr/vis_class/master/primary_schools.csv",
+            "format": {"type": "csv"}
+          },
+          "width": 600,
+          "height": 150,
+          "mark": "bar",
+          "encoding": {
+            "x": {
+              "bin": {"step": 20},
+              "field": "Total",
+              "type": "quantitative",
+              "title": "Number of Students"
+            },
+            "y": {
+              "aggregate": "count",
+              "type": "quantitative",
+              "title": "Schools"
+            },
+            "color": {"value": "black"}
+          }
+        }
+      ]
+    }
+  ]
+}
