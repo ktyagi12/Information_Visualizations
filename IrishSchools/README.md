@@ -66,6 +66,8 @@ The Irish Primary Schools dataset consists of the details for every primary scho
 Lastly, all the filters are applied to all three visualizations and an interactive dashboard is ready to visualize.
 
 
+[![Watch the video](https://github.com/ktyagi12/Information_Visualizations/blob/master/IrishSchools/output/IrishSchools.gif)
+
 
 
 [Click here for the code](https://github.com/ktyagi12/Information_Visualizations/tree/master/IrishSchools/code)
