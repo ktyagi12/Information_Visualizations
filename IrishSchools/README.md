@@ -7,9 +7,7 @@
 ![image](https://user-images.githubusercontent.com/38240162/81474466-860d6680-91fd-11ea-8d97-c0262781bc72.png)
 
 
-**DATASET:** Irish Primary Schools 
-
-The Irish Primary Schools dataset consists of the details for every primary school in Ireland.
+**DATASET:** Irish Primary Schools consisting the details for every primary school in Ireland.
 
 *The dataset consists of:*
 	
